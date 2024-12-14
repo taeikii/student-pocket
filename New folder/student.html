@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* Sidebar Drawer */
+        .drawer {
+            height: 100%;
+            width: 0; /* Hidden initially */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.3s; /* Smooth open/close transition */
+            padding-top: 60px;
+        }
+        .drawer a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #f2f2f2;
+            display: block;
+            transition: 0.2s;
+        }
+        .drawer a:hover {
+            background-color: #575757;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            color: white;
+            cursor: pointer;
+        }
+        /* Main Content */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+        .menu-btn {
+            font-size: 20px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .menu-btn:hover {
+            background-color: #45a049;
+        }
+        /* Section Content */
+        .content {
+            display: none; /* Hidden by default */
+        }
+        .content.active {
+            display: block; /* Show active content */
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Drawer -->
+    <div id="drawer" class="drawer">
+        <span class="close-btn" onclick="closeDrawer()">&times;</span>
+        <a href="#" onclick="showContent('profile')">Profile</a>
+        <a href="#" onclick="showContent('assignments')">Assignments</a>
+        <a href="#" onclick="showContent('schedule')">Schedule</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <button class="menu-btn" onclick="openDrawer()">☰ Open Menu</button>
+        <div id="content-container">
+            <!-- Profile Content -->
+            <div id="profile" class="content active">
+                <h1>Student Profile</h1>
+                <p>Welcome to your profile section.</p>
+            </div>
+
+            <!-- Assignments Content -->
+            <div id="assignments" class="content">
+                <h1>Assignments</h1>
+                <p>Here are your assignments:</p>
+                <ul>
+                    <li>Math Homework - Due: Dec 20</li>
+                    <li>Science Project - Due: Dec 25</li>
+                    <li>History Essay - Due: Jan 5</li>
+                </ul>
+            </div>
+
+            <!-- Schedule Content -->
+            <div id="schedule" class="content">
+                <h1>Class Schedule</h1>
+                <p>Here is your schedule for the week:</p>
+                <ul>
+                    <li>Monday: Math - 8 AM, Science - 10 AM</li>
+                    <li>Tuesday: History - 9 AM, PE - 11 AM</li>
+                    <li>Wednesday: English - 8 AM, Art - 10 AM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Open the drawer
+        function openDrawer() {
+            document.getElementById("drawer").style.width = "250px";
+            document.querySelector(".main-content").style.marginLeft = "250px";
+        }
+
+        // Close the drawer
+        function closeDrawer() {
+            document.getElementById("drawer").style.width = "0";
+            document.querySelector(".main-content").style.marginLeft = "0";
+        }
+
+        // Show specific content
+        function showContent(sectionId) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Show the selected content
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Logout function
+        function logout() {
+            alert("Logging out...");
+            window.location.href = "index.html"; // Redirect to login
+        }
+    </script>
+</body>
+</html>
