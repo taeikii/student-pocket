@@ -8,7 +8,7 @@
         /* General styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #e3f2fd;
+            background-color: #fffde7;
             margin: 0;
             padding: 0;
             display: flex;
@@ -28,7 +28,7 @@
     
         h2 {
             margin-bottom: 20px;
-            color: #1976d2;
+            color: #f9a825;
         }
     
         input[type="text"],
@@ -42,7 +42,7 @@
         }
     
         button {
-            background-color: #42a5f5;
+            background-color: #fbc02d;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -54,15 +54,14 @@
         }
     
         button:hover {
-            background-color: #1e88e5;
+            background-color: #f9a825;
         }
     
         .error {
-            color: #1565c0;
+            color: #f57f17;
             font-size: 12px;
         }
     </style>
-    
 </head>
 <body>
     <div class="login-container"> 
@@ -83,12 +82,12 @@
             const errorMessage = document.getElementById('error-message');
 
             // Example username and password
-            const validUsername = "student";
+            const validUsername = "lecturer";
             const validPassword = "password123";
 
             if (username === validUsername && password === validPassword) {
                 // Redirect to main interface (index.html)
-                window.location.href = "student.html";
+                window.location.href = "teacher.html";
                 return false; // Prevent form submission
             } else {
                 errorMessage.textContent = "Invalid username or password.";

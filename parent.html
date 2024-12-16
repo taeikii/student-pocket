@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal</title>
+    <title>Parent Portal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000040;
+            background-color: #480000;
         }
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
-            background: #000e48;
+            background: #490000;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .tabs {
             display: flex;
-            background-color: #2d89ef;
+            background-color: #ef2d2d;
             color: #fff;
         }
         .tabs button {
@@ -35,7 +35,7 @@
             cursor: pointer;
         }
         .tabs button.active {
-            background-color: #0050bc;
+            background-color: #bc0000;
         }
         .tab-content {
             padding: 20px;
@@ -44,7 +44,7 @@
         .tab-content.active {
             display: block;
         }
-        input, button {
+        input, button, select {
             display: block;
             margin: 10px 0;
             width: 100%;
@@ -54,13 +54,13 @@
             border-radius: 4px;
         }
         button.submit {
-            background-color: #2d89ef;
+            background-color: #ef2d2d;
             color: white;
             border: none;
             cursor: pointer;
         }
         button.submit:hover {
-            background-color: #0050bc;
+            background-color: #bc0000;
         }
     </style>
 </head>
@@ -68,29 +68,27 @@
     <div class="container">
         <div class="tabs">
             <button class="tab-link active" onclick="openTab(event, 'check-grades')">Check Grades</button>
-            <button class="tab-link" onclick="openTab(event, 'review-schedule')">Review Schedule</button>
-            <button class="tab-link" onclick="openTab(event, 'review-wallet')">Review E-Wallet</button>
+            <button class="tab-link" onclick="openTab(event, 'add-wallet')">Add to E-Wallet</button>
+            <button class="tab-link" onclick="openTab(event, 'review-attendance')">Review Attendance</button>
         </div>
 
         <!-- Tab Content -->
         <div id="check-grades" class="tab-content active">
+            <h2>Check Your Child's Grades</h2>
             <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Student Result Interface</title>
                 <style>
                     body {
                         font-family: Arial, sans-serif;
                         margin: 0;
                         padding: 0;
-                        background-color: #f5faff;
-                        color: #1a237e;
+                        background-color: #fff5f5;
+                        color: #b71c1c;
                     }
                 
                     .container {
                         max-width: 900px;
                         margin: 50px auto;
-                        background: #e3f2fd;
+                        background: #ffebee;
                         border-radius: 12px;
                         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
                         padding: 30px;
@@ -99,18 +97,18 @@
                     .header {
                         text-align: center;
                         padding: 15px 0;
-                        border-bottom: 2px solid #1a237e;
+                        border-bottom: 2px solid #b71c1c;
                     }
                 
                     .header h1 {
                         font-size: 28px;
-                        color: #0d47a1;
+                        color: #d32f2f;
                         margin: 0;
                     }
                 
                     .header p {
                         font-size: 16px;
-                        color: #3f51b5;
+                        color: #f44336;
                         margin-top: 5px;
                     }
                 
@@ -130,13 +128,13 @@
                     }
                 
                     .table th {
-                        background-color: #0d47a1;
+                        background-color: #d32f2f;
                         color: #ffffff;
                         font-weight: bold;
                     }
                 
                     .table td {
-                        color: #1a237e;
+                        color: #b71c1c;
                     }
                 
                     .actions {
@@ -145,7 +143,7 @@
                     }
                 
                     .actions button {
-                        background-color: #1976d2;
+                        background-color: #e53935;
                         color: white;
                         border: 10px;
                         padding: 12px 20px;
@@ -157,16 +155,16 @@
                     }
                 
                     .actions button:hover {
-                        background-color: #0d47a1; 
+                        background-color: #b71c1c; 
                     }
                 
                     .actions button.secondary {
-                        background-color: #5c6bc0;
+                        background-color: #ef5350;
                         margin-top: 15px;
                     }
                 
                     .actions button.secondary:hover {
-                        background-color: #3949ab;
+                        background-color: #c62828;
                     }
                 
                     .student-id-input {
@@ -185,7 +183,7 @@
                     .student-id-input button {
                         padding: 12px 20px; 
                         font-size: 16px;
-                        background-color: #1976d2;
+                        background-color: #e53935;
                         color: white;
                         border: none;
                         border-radius: 6px;
@@ -194,16 +192,17 @@
                     }
                 
                     .student-id-input button:hover {
-                        background-color: #0d47a1;
+                        background-color: #b71c1c;
                     }
                 
                     .error-message {
-                        color: red;
+                        color: #d32f2f;
                         text-align: center;
                         margin-top: 15px;
                         font-size: 14px;
                     }
                 </style>
+                
                 
             </head>
             <body>
@@ -333,99 +332,8 @@
             </body>
         </div>
 
-        <div id="review-schedule" class="tab-content">
-            <!-- Review Schedule Content -->
-            <h2>Your Weekly Schedule</h2>
-            <style>
-                body {
-                    font-family: Arial, sans-serif;
-                    background-color: #f8f8f8;
-                    color: #333;
-                    margin: 0;
-                    padding: 20px;
-                }
-            
-                .schedule-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background-color: #fff;
-                    margin-top: 20px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    border-radius: 8px;
-                }
-            
-                .schedule-table th, .schedule-table td {
-                    padding: 12px 15px;
-                    text-align: left;
-                    border: 1px solid #ddd;
-                }
-            
-                .schedule-table th {
-                    background-color: #3659f4; /* Vibrant red */
-                    color: white;
-                    font-size: 18px;
-                }
-            
-                .schedule-table td {
-                    background-color: #fff;
-                    font-size: 16px;
-                }
-            
-                .schedule-table tr:nth-child(even) td {
-                    background-color: #f8f8f8; /* Light gray for even rows */
-                }
-            
-                .schedule-table tr:hover td {
-                    background-color: #f2f2f2; /* Light hover effect */
-                }
-            </style>
-            
-            <body>
-              <div class="container">
-                <h2>Your Weekly Schedule</h2>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Subject</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>Math</td>
-                            <td>9 AM - 11 AM</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>Science</td>
-                            <td>10 AM - 12 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>History</td>
-                            <td>1 PM - 3 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>Computer Science</td>
-                            <td>2 PM - 4 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>Physical Education</td>
-                            <td>8 AM - 10 AM</td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
-            </body>
-            
-        </div>
-
-        <div id="review-wallet" class="tab-content">
-            <h2>Review Your E-Wallet</h2>
+        <div id="add-wallet" class="tab-content">
+            <h2>Add Money to Your Child's E-Wallet</h2>
             <body>
                 <div class="container">
                   <div class="balance-section">
@@ -435,6 +343,178 @@
                   <button class="action-button">Send Money</button>
                 </div>
               </body>
+              
+        </div>
+
+        <div id="review-attendance" class="tab-content">
+            <h2>Review Your Child's Attendance</h2>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f8f8f8;
+                    color: #333;
+                    margin: 0;
+                    padding: 20px;
+                }
+            
+                .attendance-table {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+            
+                .filters {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                }
+            
+                #search {
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    width: 30%;
+                }
+            
+                #filter-group {
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+            
+                #mark-all {
+                    padding: 8px 16px;
+                    background-color: #f34040; /* Vibrant yellow */
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 16px;
+                }
+            
+                #mark-all:hover {
+                    background-color: #e23535 ; /* Slightly darker yellow */
+                }
+            
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 20px;
+                }
+            
+                th, td {
+                    padding: 12px 15px;
+                    text-align: left;
+                }
+            
+                th {
+                    background-color: #f34040; /* Vibrant yellow */
+                    color: white;
+                    font-size: 18px;
+                }
+            
+                td {
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                }
+            
+                .attendance-status {
+                    padding: 8px 12px;
+                    border-radius: 4px;
+                    border: 1px solid #ddd;
+                }
+            
+                .save-btn {
+                    padding: 8px 16px;
+                    background-color: #f34040;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+            
+                .save-btn:hover {
+                    background-color: #e2b735;
+                }
+            </style>
+            <form id="attendance-form">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>
+                                <select class="attendance-status">
+                                    <option value="present" selected>Present</option>
+                                    <option value="absent">Absent</option>
+                                    <option value="leave">Leave</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="save-btn">Save</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td>
+                                <select class="attendance-status">
+                                    <option value="present">Present</option>
+                                    <option value="absent" selected>Absent</option>
+                                    <option value="leave">Leave</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="save-btn">Save</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Michael Johnson</td>
+                            <td>
+                                <select class="attendance-status">
+                                    <option value="present" selected>Present</option>
+                                    <option value="absent">Absent</option>
+                                    <option value="leave">Leave</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="save-btn">Save</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Emily Davis</td>
+                            <td>
+                                <select class="attendance-status">
+                                    <option value="present">Present</option>
+                                    <option value="absent">Absent</option>
+                                    <option value="leave" selected>Leave</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="save-btn">Save</button></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Daniel Wilson</td>
+                            <td>
+                                <select class="attendance-status">
+                                    <option value="present" selected>Present</option>
+                                    <option value="absent">Absent</option>
+                                    <option value="leave">Leave</option>
+                                </select>
+                            </td>
+                            <td><button type="button" class="save-btn">Save</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
 
@@ -457,7 +537,7 @@
         <a href="index.html" style="
             display: inline-block; 
             padding: 10px 20px; 
-            background-color: #2d89ef; 
+            background-color: #ef2d2d; 
             color: white; 
             text-decoration: none; 
             border-radius: 5px; 

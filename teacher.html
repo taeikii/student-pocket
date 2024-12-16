@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+    
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+    
+        .tabs {
+            display: flex;
+            background-color: hwb(54 11% 11%); /* Light background for tabs */
+        }
+    
+        .tabs button {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: #333; /* Inactive tab text color */
+            font-size: 16px;
+            cursor: pointer;
+        }
+    
+        .tabs button.active {
+            background-color: hwb(51 7% 24%); /* Yellow background for active tab */
+            color: #333; /* Dark text color for the active tab */
+            font-weight: bold;
+        }
+    
+        .tab-content {
+            padding: 20px;
+            display: none;
+        }
+    
+        .tab-content.active {
+            display: block;
+        }
+    
+        input, textarea, select, button {
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    
+        button.submit {
+            background-color: #efd22d;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    
+        button.submit:hover {
+            background-color: #ffc107; /* Slightly darker yellow on hover */
+            color: #333; /* Text color changes to dark for contrast */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'attendance')">Submit Attendance</button>
+            <button class="tab-link" onclick="openTab(event, 'grades')">Submit Grades</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="attendance" class="tab-content active">
+            <h2>Submit Student Attendance</h2>
+            <div class="attendance-table">
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f8f8f8;
+                        color: #333;
+                        margin: 0;
+                        padding: 20px;
+                    }
+                
+                    .attendance-table {
+                        background-color: #fff;
+                        padding: 20px;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+                
+                    .filters {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 20px;
+                    }
+                
+                    #search {
+                        padding: 8px 12px;
+                        font-size: 16px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        width: 30%;
+                    }
+                
+                    #filter-group {
+                        padding: 8px 12px;
+                        font-size: 16px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+                
+                    #mark-all {
+                        padding: 8px 16px;
+                        background-color: #f3c240; /* Vibrant yellow */
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        font-size: 16px;
+                    }
+                
+                    #mark-all:hover {
+                        background-color: #e2b735; /* Slightly darker yellow */
+                    }
+                
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                    }
+                
+                    th, td {
+                        padding: 12px 15px;
+                        text-align: left;
+                    }
+                
+                    th {
+                        background-color: #f3c240; /* Vibrant yellow */
+                        color: white;
+                        font-size: 18px;
+                    }
+                
+                    td {
+                        background-color: #fff;
+                        border: 1px solid #ddd;
+                    }
+                
+                    .attendance-status {
+                        padding: 8px 12px;
+                        border-radius: 4px;
+                        border: 1px solid #ddd;
+                    }
+                
+                    .save-btn {
+                        padding: 8px 16px;
+                        background-color: #f3c240;
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    }
+                
+                    .save-btn:hover {
+                        background-color: #e2b735;
+                    }
+                </style>
+                
+                <div class="attendance-table">
+                    <form id="attendance-form">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>
+                                        <select class="attendance-status">
+                                            <option value="present" selected>Present</option>
+                                            <option value="absent">Absent</option>
+                                            <option value="leave">Leave</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="save-btn">Save</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td>
+                                        <select class="attendance-status">
+                                            <option value="present">Present</option>
+                                            <option value="absent" selected>Absent</option>
+                                            <option value="leave">Leave</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="save-btn">Save</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Michael Johnson</td>
+                                    <td>
+                                        <select class="attendance-status">
+                                            <option value="present" selected>Present</option>
+                                            <option value="absent">Absent</option>
+                                            <option value="leave">Leave</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="save-btn">Save</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Emily Davis</td>
+                                    <td>
+                                        <select class="attendance-status">
+                                            <option value="present">Present</option>
+                                            <option value="absent">Absent</option>
+                                            <option value="leave" selected>Leave</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="save-btn">Save</button></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Daniel Wilson</td>
+                                    <td>
+                                        <select class="attendance-status">
+                                            <option value="present" selected>Present</option>
+                                            <option value="absent">Absent</option>
+                                            <option value="leave">Leave</option>
+                                        </select>
+                                    </td>
+                                    <td><button type="button" class="save-btn">Save</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>    
+            
+        </div>
+
+        <div id="grades" class="tab-content">
+            <h2>Submit Student Grades</h2>
+            <form>
+                <label for="student-name-grade">Student Name</label>
+                <input type="text" id="student-name-grade" name="student-name-grade" placeholder="Enter Student Name">
+                <label for="student-grade">Grade</label>
+                <input type="text" id="student-grade" name="student-grade" placeholder="Enter Grade">
+                <button type="submit" class="submit">Submit Grade</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openTab(event, tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(link => link.classList.remove('active'));
+
+            // Show the selected tab and add active class to the button
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+    <div style="text-align: center; padding: 10px;">
+        <a href="index.html" style="
+            display: inline-block; 
+            padding: 10px 20px; 
+            background-color: #efe22d; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-size: 16px;
+        ">Logout</a>
+    </div>
+</body>
+</html>
